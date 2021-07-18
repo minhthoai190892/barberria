@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1034737951109",
+    "project_id": "barberria-62bc6",
+    "storage_bucket": "barberria-62bc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034737951109:android:70bd99d7cb8630d960a4ec",
+        "android_client_info": {
+          "package_name": "com.example.barberria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034737951109-cb21ktp3hg66snrc8vuevafdpih8og5n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.barberria",
+            "certificate_hash": "11eced24f783dece88d896bed68feeba11502365"
+          }
+        },
+        {
+          "client_id": "1034737951109-n9s1qcnnatll4kfqfiachdjcrotdqan1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhIwVWYC6R6DQ4j_FiRhWF9ZQKIHn4b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034737951109-n9s1qcnnatll4kfqfiachdjcrotdqan1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
