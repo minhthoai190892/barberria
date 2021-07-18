@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       onGenerateRoute: (settings){
         switch(settings.name){
@@ -76,13 +76,13 @@ class MyApp extends StatelessWidget {
 //   _MyHomePageState createState() => _MyHomePageState();
 // }
 
-class MyHomePage extends ConsumerWidget {
+class MyHomePage extends ConsumerWidget {// trang dang nhap
   GlobalKey<ScaffoldState> scaffoldState = new GlobalKey();
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     // TODO: implement build
-    return Scaffold(
+    return SafeArea(child: Scaffold(
       key: scaffoldState,
       body: Container(
         decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class MyHomePage extends ConsumerWidget {
         ),
       ),
 
-    );
+    ));
   }
 
 
