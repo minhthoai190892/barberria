@@ -38,6 +38,8 @@ dependencies:
   rflutter_alert: any
   cloud_firestore: any
 
+  carousel_slider: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

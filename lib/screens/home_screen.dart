@@ -1,6 +1,10 @@
 
+import 'package:barberria/cloud_firestore/banner_ref.dart';
+import 'package:barberria/cloud_firestore/lookbook_ref.dart';
 import 'package:barberria/cloud_firestore/user_ref.dart';
+import 'package:barberria/model/image_model.dart';
 import 'package:barberria/model/user_model.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +40,7 @@ class Homepage extends ConsumerWidget{
 
                       child: Row(
                         children: [
-                          //Button account
+                          //icon account
                           CircleAvatar(
                             child: Icon(Icons.person,color: Colors.white,size: 30,),
                             backgroundColor: Colors.black,
@@ -64,7 +68,122 @@ class Homepage extends ConsumerWidget{
                       ),
                     );
                   }
-                })
+                }),
+                //Menu
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      //booking
+                      Expanded(child: Container(
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.book_online,size: 50,),
+                                Text('Booking',style: GoogleFonts.robotoMono(),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+
+                      //shopping
+                      Expanded(child: Container(
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.shopping_cart,size: 50,),
+                                Text('Cart',style: GoogleFonts.robotoMono(),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+                      //history
+                      Expanded(child: Container(
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.history,size: 50,),
+                                Text('History',style: GoogleFonts.robotoMono(),)
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+                    ],
+                  ),
+                ),
+                //banner
+                FutureBuilder(
+                    future: getBanners(),//banner_ref
+                    builder: (context,snapshot){
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }else{
+                        var banners = snapshot.data as List<ImageModel>;
+                        return CarouselSlider(
+                            options: CarouselOptions(
+                              autoPlay: true,
+                              enlargeCenterPage: true,
+                              viewportFraction: 0.9,
+                              aspectRatio: 2.0,
+                              initialPage: 2,
+                              autoPlayInterval: Duration(seconds: 3),
+                            ),
+                          items: banners.map((e)=>Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(e.image),//image->imagemodel
+                            ),
+                          )).toList()
+
+                        );
+                      }
+
+                }),
+                //LookBook
+                //title Lookbook
+                Padding(padding: const EdgeInsets.all(8),
+                  child: Row(
+                    children: [
+                      Text("LOOKBOOK",style: GoogleFonts.robotoMono(fontSize: 24),)
+                    ],
+                  ),
+                ),
+                FutureBuilder(
+                    future: getLookbook(),//banner_ref
+                    builder: (context,snapshot){
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }else{
+                        var lookbook = snapshot.data as List<ImageModel>;
+                        return Column(
+                          children: lookbook.map((e) => Container(
+                          padding: const EdgeInsets.all(8),//định dạng khoảng cách các hình
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(e.image),
+                          )),
+                        ).toList(),
+                        );
+                      }
+
+                    }),
               ],
 
           ),
