@@ -4,7 +4,7 @@ class ImageModel{
   ImageModel({this.image});
 
   ImageModel.fromJson(Map<String,dynamic> json){
-    image = json['image'];//tên field
+    image = json['image'];//tên field firebase
 
   }
   Map<String,dynamic> toJson(){

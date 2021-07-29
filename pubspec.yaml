@@ -40,6 +40,9 @@ dependencies:
 
   carousel_slider: any
 
+  im_stepper: any
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

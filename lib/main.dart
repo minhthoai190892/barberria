@@ -1,4 +1,5 @@
 
+import 'package:barberria/screens/booking_screen.dart';
 import 'package:barberria/screens/home_screen.dart';
 import 'package:barberria/state/state_managerment.dart';
 import 'package:barberria/utils/utils.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      // định tuyến
       onGenerateRoute: (settings){
         switch(settings.name){
           case '/home':
@@ -38,6 +40,15 @@ class MyApp extends StatelessWidget {
                 type: PageTransitionType.fade
             );
             break;
+          case '/booking':
+            return PageTransition(
+                settings: settings,
+                child: BookingScreen(),
+                type: PageTransitionType.fade
+            );
+            break;
+
+
           default:return null;
         }
       },

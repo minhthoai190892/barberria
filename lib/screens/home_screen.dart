@@ -39,33 +39,42 @@ class Homepage extends ConsumerWidget{
                       padding: const EdgeInsets.all(16),
 
                       child: Row(
-                        children: [
-                          //icon account
-                          CircleAvatar(
-                            child: Icon(Icons.person,color: Colors.white,size: 30,),
-                            backgroundColor: Colors.black,
-                            maxRadius: 30,
-                          ),
-                          SizedBox(width: 30,),
-                          Expanded(child: Column(
-                            children: [
-                              Text('${userModel.name}',
-                                style:
-                                GoogleFonts.robotoMono(fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text('${userModel.address}',
-                                overflow: TextOverflow.ellipsis,
-                                style:
-                                GoogleFonts.robotoMono(fontSize: 18,
-                                  color: Colors.white,),
-                              ),
-                            ],
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                          ))
-                        ],
-                      ),
+                      children: [
+
+                        //icon account
+                        CircleAvatar(
+                          child: Icon(Icons.person,color: Colors.white,size: 30,),
+                          backgroundColor: Colors.black,
+                          maxRadius: 30,
+
+                        ),
+                        SizedBox(width: 30,),
+
+                        //icon account
+
+                        //info
+                        Expanded(child: Column(
+                          children: [
+                            Text('${userModel.name}',
+                              style:
+                              GoogleFonts.robotoMono(fontSize: 22,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text('${userModel.address}',
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                              GoogleFonts.robotoMono(fontSize: 18,
+                                color: Colors.white,),
+                            ),
+                          ],
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                         ),
+                        ),
+                        //end info
+                      ],
+                    ),
+
                     );
                   }
                 }),
@@ -76,20 +85,23 @@ class Homepage extends ConsumerWidget{
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       //booking
-                      Expanded(child: Container(
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.book_online,size: 50,),
-                                Text('Booking',style: GoogleFonts.robotoMono(),)
-                              ],
+                      Expanded(
+                        child: GestureDetector(onTap: ()=> Navigator.pushNamed(context, '/booking'),
+                        child: Container(
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.book_online,size: 50,),
+                                  Text('Booking',style: GoogleFonts.robotoMono(),)
+                                ],
+                              ),
                             ),
                           ),
+                        )),
                         ),
-                      )),
 
                       //shopping
                       Expanded(child: Container(
@@ -124,6 +136,7 @@ class Homepage extends ConsumerWidget{
                     ],
                   ),
                 ),
+                //end Menu
                 //banner
                 FutureBuilder(
                     future: getBanners(),//banner_ref
